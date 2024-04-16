@@ -1,0 +1,8 @@
+- Update the following section of the package.json file:
+  - description
+  - repository url
+  - keywords
+
+- Currently below is the description, that I know that my backend application provides, so please create a description for the package.json file considering below content. Pls keep it professional and as per industry standards 🙏
+
+feature full backend api with complete crud functionalities, authentication, pagination

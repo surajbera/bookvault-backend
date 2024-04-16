@@ -1,0 +1,27 @@
+{
+  "name": "elib-backend",
+  "version": "1.0.0",
+  "description": "feature full backend api with complete crud functionalities, authentication, pagination",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surajbera/elib-backend"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "authentication",
+    "crud"
+  ],
+  "author": "Suraj Bera <surajbera.dev@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
