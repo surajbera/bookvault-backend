@@ -9,3 +9,5 @@
 - add the ESLint vscode plugin
 - `npm i express`
 - `npm i -D @types/express`
+- `npm i dotenv`
+- `npm i @types/dotenv`
