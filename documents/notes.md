@@ -11,3 +11,5 @@
 - `npm i -D @types/express`
 - `npm i dotenv`
 - `npm i @types/dotenv`
+- variables starting with an underscore (\_) are treated as private by developers. Refer config the
+  config file.
