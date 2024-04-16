@@ -5,3 +5,4 @@
 - add dev script in package.json: `nodemon server.ts`
 - In development, we will use nodemon
 - In production, we will use node
+- `npm init @eslint/config`
