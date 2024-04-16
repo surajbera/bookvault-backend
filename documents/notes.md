@@ -6,3 +6,6 @@
 - In development, we will use nodemon
 - In production, we will use node
 - `npm init @eslint/config`
+- add the ESLint vscode plugin
+- `npm i express`
+- `npm i -D @types/express`
