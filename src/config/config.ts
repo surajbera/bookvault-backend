@@ -6,7 +6,11 @@ const _config = {
   port: process.env.PORT,
   databaseUrl: process.env.MONGO_CONNECTION_STRING,
   env: process.env.NODE_ENV,
+  saltRounds: process.env.SALT_ROUNDS,
+  jwtSecret: process.env.JWT_SECRET,
 };
+
+// console.log(_config.jwtSecret);
 
 // creating the config read only using Object.freeze()
 export const config = Object.freeze(_config);
