@@ -15,3 +15,6 @@
   config file.
 - `npm i mongoose`
 - `npm i -D @types/mongoose`
+- error handling is very important in node.js
+- `npm i http-errors`
+- `npm i -D @types/http-errors`
