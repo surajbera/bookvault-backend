@@ -1,5 +1,5 @@
 - `npm init`
-- `npm i -D typescript @types/node ts-node nodemon`
+- `npm i -D typescript ts-node @types/node nodemon`
 - `npx tsc --init`
 - create node gitignore file
 - add dev script in package.json: `nodemon server.ts`
