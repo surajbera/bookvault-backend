@@ -10,3 +10,4 @@ feature full backend api with complete crud functionalities, authentication, pag
 
 - change the name elib backend to something else, since the project is not yet pushed to github. 
 - Do this after the project is complete or extra improvements are added into the code
+- form validation on user registration
