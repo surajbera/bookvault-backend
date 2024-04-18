@@ -6,7 +6,7 @@ import { config } from '../config/config';
 import { sign } from 'jsonwebtoken';
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
-  // Validation;
+  // Validation
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -26,6 +26,7 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
   const saltRounds = Number(config.saltRounds) || 10;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+  // Storing the user in database
   const newUser = await userModel.create({
     name: name,
     email: email,
