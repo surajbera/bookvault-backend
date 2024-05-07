@@ -1,10 +1,17 @@
+// libraries
 import { NextFunction, Request, Response } from 'express';
 import createHttpError from 'http-errors';
-import userModel from './userModel';
 import bcrypt from 'bcrypt';
-import { config } from '../config/config';
 import { sign } from 'jsonwebtoken';
+
+// configurations
+import { config } from '../config/config';
+
+// types
 import { IUser } from './userTypes';
+
+// user schema
+import userModel from './userModel';
 
 const registerUser = async (req: Request, res: Response, next: NextFunction) => {
   // Validation
@@ -23,7 +30,8 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
       return next(customError);
     }
   } catch (error) {
-    return next(createHttpError(500, 'Error while getting user'));
+    const customError = createHttpError(500, 'Failed to check existing user');
+    return next(customError);
   }
 
   // password hashing
@@ -39,7 +47,8 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
       password: hashedPassword,
     });
   } catch (error) {
-    return next(createHttpError(500, 'Error while getting user'));
+    const customError = createHttpError(500, 'Failed to create user account')
+    return next(customError);
   }
 
   // Token Generation
@@ -52,7 +61,8 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
     // Response
     res.status(201).json({ accessToken: token });
   } catch (error) {
-    return next(createHttpError(500, 'Error while getting user'));
+    const customError = createHttpError(500, 'Failed to generate authentication token')
+    return next(customError);
   }
 };
 
@@ -61,20 +71,20 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   console.log('email => ', email);
 
   if (!email || !password) {
-    return next(createHttpError(400, 'All field are required'));
+    return next(createHttpError(400, 'All fields are required'));
   }
 
   try {
     // check user email
     const user = await userModel.findOne({ email: email });
     if (!user) {
-      return next(createHttpError(400, 'Email or password is wrong'));
+      return next(createHttpError(400, 'Email address not found'));
     }
 
     // check user password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return next(createHttpError(400, 'Password is incorrect'));
+      return next(createHttpError(400, 'Invalid email or password'));
     }
 
     // create access token
@@ -86,7 +96,7 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
 
     res.json({ accessToken: token });
   } catch (err) {
-    return next(createHttpError(400, 'Error while logging in the user'));
+    return next(createHttpError(500, 'Unexpected error during login process'));
   }
 };
 
