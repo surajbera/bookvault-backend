@@ -2,7 +2,7 @@
   "name": "BookVault-backend",
   "version": "1.0.0",
   "description": "feature full backend api with complete crud functionalities, authentication, pagination(YET TO BE UPDATED)",
-  "main": "index.js", 
+  "main": "index.js",
   "todo": "Update description after project is complete, update the main file, currently it is index.js which is actually wrong",
   "scripts": {
     "dev": "nodemon server.ts"
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cloudinary": "^2.2.0",
     "express": "^4.19.2",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
