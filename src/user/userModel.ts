@@ -1,4 +1,7 @@
+// libraries
 import mongoose from 'mongoose';
+
+// types
 import { IUser } from './userTypes';
 
 const userSchema = new mongoose.Schema<IUser>(

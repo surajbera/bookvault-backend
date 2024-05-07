@@ -1,5 +1,9 @@
 import app from './src/app';
+
+// configurations
 import { config } from './src/config/config';
+
+// db
 import connectDB from './src/config/db';
 
 const startServer = async () => {
