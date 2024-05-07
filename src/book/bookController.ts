@@ -14,7 +14,7 @@ export const createBook = async (req: Request, res: Response, next: NextFunction
     const filePath = path.resolve(__dirname, "../../public/data/uploads", fileName);
 
     const uploadResult = await cloudinary.uploader.upload(filePath, {
-      folder: "book-covers",
+      folder: "book-vault/book-covers",
       format: coverImageMimeType,
       filename_override: fileName,
     });
