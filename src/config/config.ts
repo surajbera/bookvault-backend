@@ -10,7 +10,5 @@ const _config = {
   jwtSecret: process.env.JWT_SECRET,
 };
 
-// console.log(_config.jwtSecret);
-
 // creating the config read only using Object.freeze()
 export const config = Object.freeze(_config);
