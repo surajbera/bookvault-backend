@@ -1,0 +1,9 @@
+201 Created: Successful creation of a resource, like when a new user is registered. 
+
+401 Unauthorized: Specifically for authentication errors where the client is not allowed access without proper credentials. 
+
+403 Forbidden: The client's credentials do not grant them the right to access a resource. 
+
+404 Not Found: Resource not found, e.g., no user found with a given email.
+
+409 Conflict: Requests conflict with the current state of the server, such as trying to create a duplicate user.

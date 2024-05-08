@@ -12,9 +12,6 @@ import logMessage from "../../utils/logMessage";
 import bookModel from "../bookModel";
 
 export const createBook = async (req: Request, res: Response, next: NextFunction) => {
-  logMessage("req.files", req.files);
-  logMessage("req.body", req.body);
-
   const { title, genre } = req.body;
 
   try {
