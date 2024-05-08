@@ -1,25 +1,25 @@
-import mongoose from 'mongoose';
-import { IBook } from './bookTypes';
+import mongoose from "mongoose";
+import { IBook } from "./bookTypes";
 
 const bookSchema = new mongoose.Schema<IBook>(
   {
-    title: {
+    bookTitle: {
       type: String,
       required: true,
     },
-    author: {
-      type: mongoose.Schema.Types.ObjectId,
+    bookAuthor: {
+      type: mongoose.Schema.Types.ObjectId, // Reference to another document, typically an Author's ID
       required: true,
     },
-    coverImage: {
+    bookGenre: {
       type: String,
       required: true,
     },
-    file: {
+    bookCoverImage: {
       type: String,
       required: true,
     },
-    genre: {
+    bookFile: {
       type: String,
       required: true,
     },
@@ -27,4 +27,4 @@ const bookSchema = new mongoose.Schema<IBook>(
   { timestamps: true }
 );
 
-export default mongoose.model<IBook>('Book', bookSchema);
+export default mongoose.model<IBook>("Book", bookSchema);
