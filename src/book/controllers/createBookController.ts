@@ -13,6 +13,8 @@ export const createBook = async (req: Request, res: Response, next: NextFunction
     const coverImageMimeType = files.coverImage[0].mimetype.split("/").at(-1);
     const filePath = path.resolve(__dirname, "../../public/data/uploads", fileName);
 
+    logMessage("fileName", fileName);
+    logMessage("coverImageMimeType", coverImageMimeType);
     logMessage("filePath", filePath);
 
     const uploadResult = await cloudinary.uploader.upload(filePath, {
