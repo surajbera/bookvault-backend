@@ -1,33 +1,53 @@
+// libraries
 import { NextFunction, Request, Response } from "express";
 import cloudinary from "../../config/cloudinary";
 import path from "node:path";
+import createHttpError from "http-errors";
+
+// utilities
 import logMessage from "../../utils/logMessage";
 
 export const createBook = async (req: Request, res: Response, next: NextFunction) => {
   logMessage("req.files", req.files);
 
   try {
-    // uploading book cover image
     const files = req.files as { [fieldName: string]: Express.Multer.File[] };
-    const fileName = files.coverImage[0].filename;
-    const coverImageMimeType = files.coverImage[0].mimetype.split("/").at(-1);
-    const filePath = path.resolve(__dirname, "../../public/data/uploads", fileName);
 
-    logMessage("fileName", fileName);
-    logMessage("coverImageMimeType", coverImageMimeType);
-    logMessage("filePath", filePath);
+    // ************** uploading book cover image **************
+    const bookCoverImageName = files.coverImage[0].filename;
+    const bookCoverImageMimeType = files.coverImage[0].mimetype.split("/").at(-1);
+    const bookCoverImagePath = path.resolve(
+      __dirname,
+      "../../../public/data/uploads",
+      bookCoverImageName
+    );
 
-    const uploadResult = await cloudinary.uploader.upload(filePath, {
+    await cloudinary.uploader.upload(bookCoverImagePath, {
       folder: "book-vault/book-covers",
-      format: coverImageMimeType,
-      filename_override: fileName,
+      format: bookCoverImageMimeType,
+      filename_override: bookCoverImageName,
     });
 
-    console.log("uploadResult => ", uploadResult);
+    // ************** uploading book pdf file **************
+    const bookPdfFileName = files.file[0].filename;
+    const bookPdfFileMimeType = files.file[0].mimetype.split("/").at(-1);
+    const bookPdfFilePath = path.resolve(
+      __dirname,
+      "../../../public/data/uploads",
+      bookPdfFileName
+    );
 
-    res.json({ message: "Create Book Route" });
+    await cloudinary.uploader.upload(bookPdfFilePath, {
+      resource_type: "raw",
+      folder: "book-vault/book-pdfs",
+      format: bookPdfFileMimeType,
+      filename_override: bookPdfFileName,
+    });
+
+    res.json({ message: "Book added successfully" });
   } catch (error) {
     console.error("Error uploading file: ", error);
-    res.status(500).json({ error: "Failed to upload image, pls try again" });
+    const customError = createHttpError(500, "Failed to upload image, pls try again");
+    return next(customError);
   }
 };

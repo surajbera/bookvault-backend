@@ -130,3 +130,4 @@ dist
 .pnp.*
 /documents/my-todo.txt
 /public
+/documents/db-data.txt
