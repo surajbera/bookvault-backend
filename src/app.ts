@@ -1,5 +1,6 @@
 // libraries
 import express from "express";
+import cors from "cors";
 
 // middlewares
 import globalErrorHandler from "./middlewares/globalErrorHandler";
@@ -8,10 +9,12 @@ import globalErrorHandler from "./middlewares/globalErrorHandler";
 import userRouter from "./user/userRouter";
 import bookRouter from "./book/bookRouter";
 
-// remove this
-console.clear();
-
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
