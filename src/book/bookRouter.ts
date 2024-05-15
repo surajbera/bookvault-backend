@@ -8,6 +8,7 @@ import multerUpload from "../middlewares/uploadMiddleware";
 import { createBook } from "./controllers/createBookController";
 import authenticate from "../middlewares/authMiddleware";
 import { updateBook } from "./controllers/updateBookController";
+import { getAllBooks } from "./controllers/getAllBooksController";
 
 const bookRouter = express.Router();
 
@@ -31,5 +32,7 @@ bookRouter.patch(
   ]),
   updateBook
 );
+
+bookRouter.get("/", getAllBooks);
 
 export default bookRouter;
