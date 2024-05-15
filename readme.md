@@ -4,8 +4,10 @@
 
 BookVault is a backend service designed to manage a digital library of books. It provides secure
 access to book resources, including the ability to upload, retrieve, update, and delete book
-entries. This service is intended for developers looking to integrate book management
-functionalities into their applications.
+entries. This service was developed using TypeScript, marking my first endeavor in building a
+backend entirely in this language. The project is intended for developers looking to integrate book
+management functionalities into their applications, leveraging TypeScript for more reliable and
+maintainable code.
 
 ## Getting Started
 
