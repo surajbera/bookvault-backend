@@ -9,6 +9,7 @@ import { createBook } from "./controllers/createBookController";
 import authenticate from "../middlewares/authMiddleware";
 import { updateBook } from "./controllers/updateBookController";
 import { getAllBooks } from "./controllers/getAllBooksController";
+import { getSingleBookController } from "./controllers/getSingleBookController";
 
 const bookRouter = express.Router();
 
@@ -34,5 +35,7 @@ bookRouter.patch(
 );
 
 bookRouter.get("/", getAllBooks);
+
+bookRouter.get("/:bookId", getSingleBookController);
 
 export default bookRouter;
