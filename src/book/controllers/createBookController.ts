@@ -48,6 +48,9 @@ export const createBook = async (req: Request, res: Response, next: NextFunction
       filename_override: bookPdfFileName,
     });
 
+    // @ts-ignore
+    logMessage("userId", req.userId);
+
     // ************** store book in db **************
     const newBook = await bookModel.create({
       bookTitle: title,
