@@ -80,19 +80,19 @@ dependencies.
 
 ### Book Endpoints
 
-#### Get All Books
+#### Get All Books:
 
 - **URL**: /api/books
 - **Method**: GET
 - **Description**: Retrieve all books in the database.
 
-#### Get a Single Book
+#### Get a Single Book:
 
 - **URL**: /api/books/{bookId}
 - **Method**: GET
 - **Description**: Retrieve details of a specific book by ID.
 
-#### Create a Book
+#### Create a Book:
 
 - **URL**: /api/books
 - **Method**: POST
@@ -107,7 +107,7 @@ dependencies.
   }
   ```
 
-#### Update a Book
+#### Update a Book:
 
 - **URL**: /api/books/{bookId}
 - **Method**: PUT
