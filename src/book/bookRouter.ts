@@ -10,6 +10,7 @@ import authenticate from "../middlewares/authMiddleware";
 import { updateBook } from "./controllers/updateBookController";
 import { getAllBooks } from "./controllers/getAllBooksController";
 import { getSingleBookController } from "./controllers/getSingleBookController";
+import { deleteBookController } from "./controllers/deleteBookController";
 
 const bookRouter = express.Router();
 
@@ -35,7 +36,7 @@ bookRouter.patch(
 );
 
 bookRouter.get("/", getAllBooks);
-
 bookRouter.get("/:bookId", getSingleBookController);
+bookRouter.delete("/:bookId", authenticate, deleteBookController);
 
 export default bookRouter;
