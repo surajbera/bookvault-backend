@@ -10,6 +10,7 @@ import logMessage from "../../utils/logMessage";
 
 // models
 import bookModel from "../bookModel";
+import { AuthRequest } from "../../middlewares/authMiddleware";
 
 export const createBook = async (req: Request, res: Response, next: NextFunction) => {
   const { title, genre } = req.body;
@@ -48,13 +49,11 @@ export const createBook = async (req: Request, res: Response, next: NextFunction
       filename_override: bookPdfFileName,
     });
 
-    // @ts-ignore
-    logMessage("userId", req.userId);
-
     // ************** store book in db **************
+    const _req = req as AuthRequest;
     const newBook = await bookModel.create({
       bookTitle: title,
-      bookAuthor: "663b3ce75fd3d97cc4ef20c6",
+      bookAuthor: _req.userId,
       bookGenre: genre,
       bookCoverImage: bookCoverUploadResponse.secure_url,
       bookFile: bookPdfUploadResponse.secure_url,
